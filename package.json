@@ -1,9 +1,11 @@
 {
   "name": "@bizbudding/expo-build-scripts",
-  "version": "1.0.0",
+  "version": "1.1.0",
   "description": "Shared preflight + execution helpers for Bizbudding Expo app build scripts (testflight, ota, appstore).",
   "main": "index.js",
   "bin": {
+    "bizbudding-deps-check": "./bin/bizbudding-deps-check.js",
+    "bizbudding-deps-fix": "./bin/bizbudding-deps-fix.js",
     "with-nvm": "./bin/with-nvm.sh"
   },
   "files": [
