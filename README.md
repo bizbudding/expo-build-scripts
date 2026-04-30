@@ -115,6 +115,38 @@ The Node check is **self-adapting**: each app declares its own Node version in i
 
 ---
 
+## Dependency commands
+
+Two CLIs for the dep-update flow defined in each app's CLAUDE.md.
+
+### `bizbudding-deps-check`
+
+Wired in consumer apps as:
+
+```json
+"deps:check": "with-nvm bizbudding-deps-check"
+```
+
+Runs three checks:
+
+1. **`expo install --check`** — hard-fails (exit 1) on any Expo SDK mismatch. These cause real runtime issues.
+2. **`npm outdated`** — prints findings as a warning. Never fails.
+3. **`npm audit`** — prints vulnerability counts as a warning. Never fails.
+
+Run before every TestFlight build and on a routine cadence (every 2 weeks).
+
+### `bizbudding-deps-fix`
+
+Wired in consumer apps as:
+
+```json
+"deps:fix": "with-nvm bizbudding-deps-fix"
+```
+
+Runs `npx expo install --fix` followed by `npm install`, then re-verifies SDK alignment. Run after `deps:check` reports Expo SDK drift, then commit `package.json` + `package-lock.json`.
+
+---
+
 ## API
 
 ### `run(cmd: string): SpawnSyncReturns`

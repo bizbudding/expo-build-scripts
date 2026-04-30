@@ -4,6 +4,14 @@ Versioned by [semver](https://semver.org/). Apps pin via a git tag or a `#semver
 
 ---
 
+## 1.1.0 — 2026-04-30
+
+- Add `bizbudding-deps-check` CLI: runs `expo install --check` (hard-fail on mismatch) plus soft-warn `npm outdated` and `npm audit`.
+- Add `bizbudding-deps-fix` CLI: runs `expo install --fix` then `npm install`, with post-fix alignment re-verification.
+- Wire both via the existing `with-nvm` shim in consuming apps.
+
+---
+
 ## 1.0.0 — 2026-04-21
 
 First stable release. Repo flipped from private to public; install via `git+https://github.com/bizbudding/expo-build-scripts.git#semver:^1.0.0` (no auth required).
